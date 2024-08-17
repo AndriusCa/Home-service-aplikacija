@@ -1,0 +1,48 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-bottom: 2px solid #f1f1f1;
+  padding-bottom: 2em;
+  nav {
+    div {
+      margin: 2em 0;
+    }
+  }
+  button {
+    background-color: #8056eb;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  .leftSide {
+    div {
+      color: #323232;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+  }
+  @media only screen and (min-width: 774px) {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 2em 4em;
+    height: 7em;
+    .leftSide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      // height: 4em;
+      gap: 2rem;
+      div {
+        color: #323232;
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+    }
+  }
+}

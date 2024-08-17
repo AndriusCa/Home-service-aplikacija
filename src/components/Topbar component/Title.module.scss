@@ -1,0 +1,41 @@
+.titleContainer {
+  padding-top: 2rem;
+  text-align: center;
+  padding: 6rem;
+  .title {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 3.5rem;
+    line-height: 5rem;
+    span {
+      color: #8056eb;
+    }
+  }
+  .subtitle {
+    color: #a8a8a8;
+    font-size: 1.5rem;
+    padding: 1rem;
+  }
+  .searchField {
+    display: flex;
+    justify-content: center;
+    padding-top: 2em;
+    gap: 1em;
+    input[type="text"] {
+      transition: box-shadow 0.1s ease-in, border 0.1s ease-in,
+        background-color 0.1s ease-in;
+      color: #0e0e10;
+      padding: 1rem;
+      font-size: 1rem;
+      border: 2px solid #dee1e2;
+      border-radius: 30px;
+      width: 25%;
+    }
+    .searchIcon {
+      background-color: #8056eb;
+      cursor: pointer;
+      padding: 1.5em;
+      border-radius: 50%;
+    }
+  }
+}
