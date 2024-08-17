@@ -150,6 +150,8 @@ const App: React.FC = () => (
 
 export default App;
 
+// testing
+
 // uzduotis nr. 1 use state
 
 // Topbar komponentas: Tai turėtų apimti logotipą ir navigacijos meniu, kuris kol kas gali būti statinis (vėliau bus įtrauktas react-router).
