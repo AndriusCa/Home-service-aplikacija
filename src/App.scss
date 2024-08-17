@@ -1,0 +1,195 @@
+SCSS Styles for Home Service/Repair App
+
+// Variables
+$primary-color: #7c3aed;
+$secondary-color: #4f46e5;
+$text-color: #333;
+$light-bg: #f3f4f6;
+$white: #ffffff;
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+// Global Styles
+body {
+  font-family: 'Arial', sans-serif;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+// Navbar Styles
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: $primary-color;
+  }
+
+  ul {
+    display: flex;
+    list-style-type: none;
+
+    li {
+      margin: 0 1rem;
+      cursor: pointer;
+    }
+  }
+
+  button {
+    @include button;
+    background-color: $primary-color;
+    color: $white;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+}
+
+// Header Styles
+header {
+  text-align: center;
+  margin: 2rem 0;
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+
+    span {
+      color: $primary-color;
+    }
+  }
+
+  p {
+    color: lighten($text-color, 20%);
+  }
+}
+
+// SearchBar Styles
+.search-bar {
+  @include flex-center;
+  margin-bottom: 2rem;
+
+  input {
+    width: 60%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem 0 0 0.25rem;
+    font-size: 1rem;
+  }
+
+  button {
+    @include button;
+    background-color: $primary-color;
+    color: $white;
+    border-radius: 0 0.25rem 0.25rem 0;
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+// ServiceIcons Styles
+.service-icons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+
+  .service-icon {
+    @include flex-center;
+    flex-direction: column;
+    cursor: pointer;
+
+    img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 0.5rem;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// PopularBusinesses Styles
+.popular-businesses {
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  .business-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .business-card {
+    background-color: $light-bg;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .category {
+      background-color: $secondary-color;
+      color: $white;
+      padding: 0.25rem 0.5rem;
+      display: inline-block;
+      font-size: 0.8rem;
+      margin: 0.5rem;
+    }
+
+    h3 {
+      margin: 0.5rem;
+    }
+
+    p {
+      margin: 0.5rem;
+      font-size: 0.9rem;
+      color: lighten($text-color, 20%);
+    }
+
+    button {
+      @include button;
+      background-color: $primary-color;
+      color: $white;
+      margin: 0.5rem;
+      width: calc(100% - 1rem);
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+      }
+    }
+  }
+}
