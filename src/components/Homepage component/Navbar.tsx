@@ -1,4 +1,4 @@
-import Logoipsum from "./../../assets/Logoipsum.svg";
+import Logoipsum from "./../../assets//svg/Logoipsum.svg";
 import styles from "./Navbar.module.scss";
 
 function Navbar(): React.ReactElement {

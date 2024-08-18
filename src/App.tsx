@@ -1,7 +1,8 @@
 // import React from "react";
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import Navbar from "./components/Topbar component/Navbar";
-import Title from "./components/Topbar component/Title";
+import Home from "./components/Home";
+import Navbar from "./components/Homepage component/Navbar";
+import Title from "./components/Homepage component/Title";
 
 // Navbar Component
 // const Navbar: React.FC = () => (
@@ -131,8 +132,7 @@ import Title from "./components/Topbar component/Title";
 function App() {
   return (
     <>
-      <Navbar />
-      <Title />
+      <Home />
     </>
   );
 }

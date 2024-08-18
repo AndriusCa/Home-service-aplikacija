@@ -21,6 +21,8 @@
     justify-content: center;
     padding-top: 2em;
     gap: 1em;
+    width: 30%;
+    margin: 0 auto;
     input[type="text"] {
       transition: box-shadow 0.1s ease-in, border 0.1s ease-in,
         background-color 0.1s ease-in;
@@ -29,12 +31,12 @@
       font-size: 1rem;
       border: 2px solid #dee1e2;
       border-radius: 30px;
-      width: 25%;
+      width: 100%;
     }
     .searchIcon {
       background-color: #8056eb;
       cursor: pointer;
-      padding: 1.5em;
+      padding: 1.2em;
       border-radius: 50%;
     }
   }
