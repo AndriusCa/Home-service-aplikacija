@@ -27,6 +27,15 @@ header {
       color: #323232;
       font-size: 1.2rem;
       font-weight: 500;
+      text-decoration: none;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   @media only screen and (min-width: 774px) {
@@ -47,4 +56,8 @@ header {
       }
     }
   }
+}
+
+.removeUnderline {
+  font-size: 500px;
 }
