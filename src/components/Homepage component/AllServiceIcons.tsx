@@ -1,13 +1,14 @@
 import ServiceIcon from "./ServiceIcon";
+import styles from "./AllServiceIcons.module.scss";
 
-function ServiceCombinedIcons(): React.ReactElement {
+function ServiceIconsCombined(): React.ReactElement {
   return (
-    <>
+    <div className={styles.icons}>
       <ServiceIcon
         source={
           "https://img.icons8.com/?size=100&id=9341&format=png&color=E23E40"
         }
-        text={"Truck"}
+        text={"Shifting"}
       />
       <ServiceIcon
         source={
@@ -39,8 +40,8 @@ function ServiceCombinedIcons(): React.ReactElement {
         }
         text={"Electric"}
       />
-    </>
+    </div>
   );
 }
 
-export default ServiceCombinedIcons;
+export default ServiceIconsCombined;

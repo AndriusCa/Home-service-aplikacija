@@ -21,28 +21,10 @@ interface ServiceIconProps {
 function ServiceIcon({ source, text }: ServiceIconProps): React.ReactElement {
   return (
     <div className={styles.icon}>
-      <img src={source} alt={text} />
+      <img src={source} width={"48px"} height={"48px"} alt={text} />
       <span>{text}</span>
     </div>
   );
 }
 
 export default ServiceIcon;
-
-// Truck
-// https://img.icons8.com/?size=100&id=9341&format=png&color=000000
-
-// Repair
-// https://img.icons8.com/?size=100&id=59827&format=png&color=000000
-
-// Plumbing
-// https://img.icons8.com/?size=100&id=24925&format=png&color=000000
-
-// Cleaning
-// https://img.icons8.com/?size=100&id=8088&format=png&color=000000
-
-// Painting
-// https://img.icons8.com/?size=100&id=8141&format=png&color=000000
-
-// Electric
-// https://img.icons8.com/?size=100&id=9094&format=png&color
