@@ -1,9 +1,9 @@
 import BusinessCard from "./BusinessCard";
-import styles from "./AllBusinessCards.module.scss";
+import styles from "./BusinessCardList.module.scss";
 import { BusinessCardProps } from "./BusinessCard";
 import { useLocation } from "react-router-dom";
 
-function AllBusinessCards({ service }: BusinessCardProps): React.ReactElement {
+function BusinessCardList({ service }: BusinessCardProps): React.ReactElement {
   const businessData: BusinessCardProps[] = [
     {
       source:
@@ -70,4 +70,4 @@ function AllBusinessCards({ service }: BusinessCardProps): React.ReactElement {
   );
 }
 
-export default AllBusinessCards;
+export default BusinessCardList;

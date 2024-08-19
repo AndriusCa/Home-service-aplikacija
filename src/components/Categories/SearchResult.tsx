@@ -1,5 +1,5 @@
-import AllServiceIcons from "../Homepage component/AllServiceIcons";
-import AllBusinessCards from "../Homepage component/AllBusinessCards";
+import ServiceIconList from "../Homepage/ServiceIcon/ServiceIconList";
+import BusinessCardList from "../Homepage/BusinessCard/BusinessCardList";
 import styles from "./SearchResult.module.scss";
 import { useLocation } from "react-router-dom";
 
@@ -14,10 +14,10 @@ function SearchResult(): React.ReactElement {
       <div className={styles.title}>Categories</div>
       <div className={styles.container}>
         <div className={styles.service}>
-          <AllServiceIcons />
+          <ServiceIconList />
         </div>
         <div className={styles.businessCards}>
-          <AllBusinessCards service={service} />
+          <BusinessCardList service={service} />
         </div>
       </div>
     </>

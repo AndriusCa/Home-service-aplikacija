@@ -1,14 +1,13 @@
-// import Navbar from "../Homepage component/Navbar";
-import Title from "../Homepage component/Title";
-import AllServiceIcons from "../Homepage component/AllServiceIcons";
-import AllBusinessCards from "../Homepage component/AllBusinessCards";
+import Title from "../Homepage/Title";
+import ServiceIconList from "../Homepage/ServiceIcon/ServiceIconList";
+import BusinessCardList from "../Homepage/BusinessCard/BusinessCardList";
 
 function Home(): React.ReactElement {
   return (
     <>
       <Title />
-      <AllServiceIcons />
-      <AllBusinessCards />
+      <ServiceIconList />
+      <BusinessCardList />
     </>
   );
 }

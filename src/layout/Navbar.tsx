@@ -1,4 +1,4 @@
-import Logoipsum from "./../../assets//svg/Logoipsum.svg";
+import Logoipsum from "./../assets/svg/Logoipsum.svg";
 import styles from "./Navbar.module.scss";
 import { Link } from "react-router-dom";
 

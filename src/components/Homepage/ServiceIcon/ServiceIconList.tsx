@@ -1,20 +1,38 @@
 import ServiceIcon from "./ServiceIcon";
-import homePageStyles from "./AllServiceIconsHome.module.scss";
-import searchStyles from "./AllServiceIconsSearch.module.scss";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect, CSSProperties } from "react";
+import { useNavigate } from "react-router-dom";
 
-function AllServiceIcons(): React.ReactElement {
-  const location = useLocation();
+function ServiceIconList(): React.ReactElement {
+  // const location = useLocation();
   const navigate = useNavigate();
-  const isSearchPage = location.pathname.includes("/search");
-  const styles = isSearchPage ? searchStyles : homePageStyles;
+  const isSearchPage = !location.pathname.includes("/search");
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1100);
 
   const handleIconClick = (text: string) => {
     navigate(`/search/${text}`);
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 1100);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const styles: CSSProperties = isSearchPage
+    ? {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: isMobile ? "column" : "row",
+        gap: "1em",
+      }
+    : {};
+
   return (
-    <div className={styles.icons}>
+    <div style={styles}>
       <ServiceIcon
         source="https://img.icons8.com/?size=100&id=9341&format=png&color=E23E40"
         text="Shifting"
@@ -49,4 +67,4 @@ function AllServiceIcons(): React.ReactElement {
   );
 }
 
-export default AllServiceIcons;
+export default ServiceIconList;
