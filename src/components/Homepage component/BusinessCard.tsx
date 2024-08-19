@@ -1,13 +1,16 @@
 import styles from "./BusinessCard.module.scss";
 
-interface BusinessCardProps {
-  source: string;
-  alt: string;
-  service: string;
-  title: string;
-  name: string;
-  address: string;
-  btnText: string;
+export interface Business {
+  source?: string;
+  alt?: string;
+  title?: string;
+  name?: string;
+  address?: string;
+  btnText?: string;
+}
+
+export interface BusinessCardProps extends Business {
+  service?: string;
 }
 
 function BusinessCard({

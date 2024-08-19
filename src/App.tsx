@@ -1,9 +1,9 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./components/pages/Home";
 import Layout from "./components/Layout";
 import Services from "./components/pages/Services";
 import AboutUs from "./components/pages/AboutUs";
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import SearchResult from "./components/Categories/SearchResult";
 
 function App() {
   return (
@@ -13,6 +13,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Services" element={<Services />} />
           <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/search/:category" element={<SearchResult />} />
         </Route>
       </Routes>
     </BrowserRouter>
