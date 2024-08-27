@@ -1,20 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './Login.module.scss';
 
-const UserIcon = () => (
+const EmailIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="18"
-    height="18"
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
   >
-    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-    <circle cx="12" cy="7" r="4"></circle>
+    <rect x="2" y="4" width="20" height="16" rx="2" ry="2" />
+    <path d="M22 7l-10 7L2 7" />
   </svg>
 );
 
@@ -35,17 +33,51 @@ const LockIcon = () => (
   </svg>
 );
 
+const UserIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="18"
+    height="18"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+    <circle cx="12" cy="7" r="4"></circle>
+  </svg>
+);
+
 const Login: React.FC = () => {
+  const [signUp, setSignUp] = useState<boolean>(false);
+
+  function toggleSignUp() {
+    setSignUp((signUp) => !signUp);
+    console.log(signUp);
+  }
+
   return (
     <div className={styles.loginContainer}>
       <form className={styles.loginForm}>
-        <h2>Login</h2>
+        <h2>{signUp ? 'Register' : 'Login'}</h2>
+
+        {signUp && (
+          <div className={styles.formGroup}>
+            <label htmlFor="username">Name</label>
+            <div className={styles.inputWrapper}>
+              <UserIcon />
+              <input type="text" id="email" placeholder="Type your name" />
+            </div>
+          </div>
+        )}
 
         <div className={styles.formGroup}>
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Email</label>
           <div className={styles.inputWrapper}>
-            <UserIcon />
-            <input type="text" id="username" placeholder="Type your username" />
+            <EmailIcon />
+            <input type="text" id="email" placeholder="Type your email" />
           </div>
         </div>
 
@@ -64,6 +96,12 @@ const Login: React.FC = () => {
         <button type="submit" className={styles.loginButton}>
           LOGIN
         </button>
+
+        <div className={styles.signupLink}>
+          <a href="#" onClick={toggleSignUp}>
+            Sign up
+          </a>
+        </div>
 
         <div className={styles.socialLogin}>
           <p>Or Sign Up Using</p>
@@ -93,11 +131,6 @@ const Login: React.FC = () => {
               </svg>
             </button>
           </div>
-        </div>
-
-        <div className={styles.signupLink}>
-          <p>Or Sign Up Using</p>
-          <a href="#">SIGN UP</a>
         </div>
       </form>
     </div>
