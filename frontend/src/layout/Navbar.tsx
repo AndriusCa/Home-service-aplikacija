@@ -1,6 +1,6 @@
-import Logoipsum from "./../assets/svg/Logoipsum.svg";
-import styles from "./Navbar.module.scss";
-import { Link } from "react-router-dom";
+import Logoipsum from './../assets/svg/Logoipsum.svg';
+import styles from './Navbar.module.scss';
+import { Link } from 'react-router-dom';
 
 function Navbar(): React.ReactElement {
   const isSignedIn = false;
@@ -22,7 +22,9 @@ function Navbar(): React.ReactElement {
         </div>
       </nav>
       <div>
-        <button>{isSignedIn ? "Nothing" : " Login / Sign Up"}</button>
+        <button>
+          <Link to="/Login">{isSignedIn ? 'Nothing' : ' Login / Sign Up'}</Link>
+        </button>
       </div>
     </header>
   );

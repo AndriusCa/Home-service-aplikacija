@@ -10,4 +10,15 @@
   font-size: 1.2rem;
   text-transform: capitalize;
   font-weight: 500;
+  &:hover {
+    background-color: #f2eefd;
+    border-color: #beaaf5;
+    color: #8056eb;
+  }
+}
+
+.active {
+  background-color: #f2eefd;
+  border-color: #beaaf5;
+  color: #8056eb;
 }
