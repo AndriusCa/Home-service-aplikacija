@@ -110,3 +110,5 @@ module.exports = {
   getAllCategories,
   getAllBusinesses,
 };
+
+// Andrius prisijungia
