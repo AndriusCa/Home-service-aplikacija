@@ -2,43 +2,39 @@ import ServiceIcon from './ServiceIcon';
 import { useState, useEffect, CSSProperties } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+interface ServiceIconData {
+  source: string;
+  text: string;
+}
+
 function ServiceIconList(): React.ReactElement {
   // const location = useLocation();
   const navigate = useNavigate();
   const isSearchPage = !location.pathname.includes('/search');
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1100);
+  const [categories, setCategories] = useState<ServiceIconData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  interface ServiceIconData {
-    source: string;
-    text: string;
-  }
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/categories');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setCategories(data);
+        setIsLoading(false);
+      } catch (e) {
+        setError('Failed to fetch categories');
+        setIsLoading(false);
+        console.error('There was a problem fetching the categories:', e);
+      }
+    };
 
-  const serviceIconsData: ServiceIconData[] = [
-    {
-      source: 'https://img.icons8.com/?size=100&id=8088&format=png&color=B12FDE',
-      text: 'Cleaning',
-    },
-    {
-      source: 'https://img.icons8.com/?size=100&id=59827&format=png&color=ECBB3A',
-      text: 'Repair',
-    },
-    {
-      source: 'https://img.icons8.com/?size=100&id=8141&format=png&color=059E96',
-      text: 'Painting',
-    },
-    {
-      source: 'https://img.icons8.com/?size=100&id=9341&format=png&color=E23E40',
-      text: 'Shifting',
-    },
-    {
-      source: 'https://img.icons8.com/?size=100&id=24925&format=png&color=EA9319',
-      text: 'Plumbing',
-    },
-    {
-      source: 'https://img.icons8.com/?size=100&id=9094&format=png&color=1F71C5',
-      text: 'Electric',
-    },
-  ];
+    fetchCategories();
+  }, []);
 
   const handleIconClick = (text: string) => {
     navigate(`/search/${text}`);
@@ -65,7 +61,7 @@ function ServiceIconList(): React.ReactElement {
 
   return (
     <div style={styles}>
-      {serviceIconsData.map((icon) => (
+      {categories.map((icon) => (
         <ServiceIcon key={icon.text} source={icon.source} text={icon.text} onClick={() => handleIconClick(icon.text)} />
       ))}
     </div>
