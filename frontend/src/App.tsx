@@ -1,11 +1,23 @@
-import Home from "./components/Home";
-import React from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './components/pages/Home';
+import Layout from './layout/Layout';
+import Services from './components/pages/Services';
+import AboutUs from './components/pages/AboutUs';
+import SearchResult from './components/categories/SearchResult';
+import Login from './components/pages/Login';
 
 function App() {
   return (
     <BrowserRouter>
-      <Home />
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/Services" element={<Services />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
+          <Route path="/search/:category" element={<SearchResult />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }
