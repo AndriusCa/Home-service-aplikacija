@@ -4,7 +4,7 @@ import Layout from './layout/Layout';
 import Services from './components/pages/Services';
 import AboutUs from './components/pages/AboutUs';
 import SearchResult from './components/categories/SearchResult';
-import Login from './components/Homepage/Login';
+import Login from './components/pages/Login';
 
 function App() {
   return (

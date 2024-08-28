@@ -7,9 +7,9 @@ const EmailIcon = () => (
     viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
-    stroke-width="2"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
   >
     <rect x="2" y="4" width="20" height="16" rx="2" ry="2" />
     <path d="M22 7l-10 7L2 7" />
@@ -52,32 +52,86 @@ const UserIcon = () => (
 
 const Login: React.FC = () => {
   const [signUp, setSignUp] = useState<boolean>(false);
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<string>('');
+
+  const API_URL = 'http://localhost:3000';
 
   function toggleSignUp() {
-    setSignUp((signUp) => !signUp);
-    console.log(signUp);
+    setSignUp((prevSignUp) => !prevSignUp);
+    setError('');
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setError('');
+
+    const endpoint = signUp ? '/register' : '/login';
+    const url = `${API_URL}${endpoint}`;
+    const body = signUp ? { name, email, password } : { email, password };
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(body),
+        credentials: 'include',
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        window.location.href = '/';
+      } else {
+        setError(data.error || 'An error occurred');
+      }
+    } catch (error) {
+      setError('Network error. Please try again.');
+    }
   }
 
   return (
     <div className={styles.loginContainer}>
-      <form className={styles.loginForm}>
+      <form className={styles.loginForm} onSubmit={handleSubmit}>
         <h2>{signUp ? 'Register' : 'Login'}</h2>
+
+        {error && <div className={styles.error}>{error}</div>}
 
         {signUp && (
           <div className={styles.formGroup}>
-            <label htmlFor="username">Name</label>
+            <label htmlFor="name">Username</label>
             <div className={styles.inputWrapper}>
               <UserIcon />
-              <input type="text" id="email" placeholder="Type your name" />
+              <input
+                type="text"
+                id="name"
+                placeholder="Choose a username"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
             </div>
           </div>
         )}
 
         <div className={styles.formGroup}>
-          <label htmlFor="username">Email</label>
+          <label htmlFor="email">Email</label>
           <div className={styles.inputWrapper}>
             <EmailIcon />
-            <input type="text" id="email" placeholder="Type your email" />
+            <input
+              type="email"
+              id="email"
+              placeholder="Type your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
         </div>
 
@@ -85,21 +139,24 @@ const Login: React.FC = () => {
           <label htmlFor="password">Password</label>
           <div className={styles.inputWrapper}>
             <LockIcon />
-            <input type="password" id="password" placeholder="Type your password" />
+            <input
+              type="password"
+              id="password"
+              placeholder="Type your password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
           </div>
         </div>
 
-        <a href="#" className={styles.forgotPassword}>
-          Forgot password?
-        </a>
-
         <button type="submit" className={styles.loginButton}>
-          LOGIN
+          {signUp ? 'SIGN UP' : 'LOGIN'}
         </button>
 
         <div className={styles.signupLink}>
           <a href="#" onClick={toggleSignUp}>
-            Sign up
+            {signUp ? 'Go back to Login' : 'Sign up'}
           </a>
         </div>
 

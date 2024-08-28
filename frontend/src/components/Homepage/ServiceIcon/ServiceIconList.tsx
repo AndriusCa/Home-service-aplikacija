@@ -8,6 +8,38 @@ function ServiceIconList(): React.ReactElement {
   const isSearchPage = !location.pathname.includes('/search');
   const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 1100);
 
+  interface ServiceIconData {
+    source: string;
+    text: string;
+  }
+
+  const serviceIconsData: ServiceIconData[] = [
+    {
+      source: 'https://img.icons8.com/?size=100&id=8088&format=png&color=B12FDE',
+      text: 'Cleaning',
+    },
+    {
+      source: 'https://img.icons8.com/?size=100&id=59827&format=png&color=ECBB3A',
+      text: 'Repair',
+    },
+    {
+      source: 'https://img.icons8.com/?size=100&id=8141&format=png&color=059E96',
+      text: 'Painting',
+    },
+    {
+      source: 'https://img.icons8.com/?size=100&id=9341&format=png&color=E23E40',
+      text: 'Shifting',
+    },
+    {
+      source: 'https://img.icons8.com/?size=100&id=24925&format=png&color=EA9319',
+      text: 'Plumbing',
+    },
+    {
+      source: 'https://img.icons8.com/?size=100&id=9094&format=png&color=1F71C5',
+      text: 'Electric',
+    },
+  ];
+
   const handleIconClick = (text: string) => {
     navigate(`/search/${text}`);
   };
@@ -29,53 +61,13 @@ function ServiceIconList(): React.ReactElement {
         flexDirection: isMobile ? 'column' : 'row',
         gap: '1em',
       }
-    : {
-        // display: ' flex',
-        // alignItems: 'center',
-        // flexDirection: 'column',
-        // gap: '0.5rem',
-        // padding: '1rem',
-        // border: '2px solid #e6e6e6',
-        // borderRadius: '1rem',
-        // marginBottom: '1rem',
-        // cursor: 'pointer',
-        // fontSize: '1.2rem',
-        // textTransform: 'capitalize',
-        // fontWeight: ' 500',
-      };
+    : {};
 
   return (
     <div style={styles}>
-      <ServiceIcon
-        source="https://img.icons8.com/?size=100&id=8088&format=png&color=B12FDE"
-        text="Cleaning"
-        onClick={() => handleIconClick('Cleaning')}
-      />
-      <ServiceIcon
-        source="https://img.icons8.com/?size=100&id=59827&format=png&color=ECBB3A"
-        text="Repair"
-        onClick={() => handleIconClick('Repair')}
-      />
-      <ServiceIcon
-        source="https://img.icons8.com/?size=100&id=8141&format=png&color=059E96"
-        text="Painting"
-        onClick={() => handleIconClick('Painting')}
-      />
-      <ServiceIcon
-        source="https://img.icons8.com/?size=100&id=9341&format=png&color=E23E40"
-        text="Shifting"
-        onClick={() => handleIconClick('Shifting')}
-      />
-      <ServiceIcon
-        source="https://img.icons8.com/?size=100&id=24925&format=png&color=EA9319"
-        text="Plumbing"
-        onClick={() => handleIconClick('Plumbing')}
-      />
-      <ServiceIcon
-        source="https://img.icons8.com/?size=100&id=9094&format=png&color=1F71C5"
-        text="Electric"
-        onClick={() => handleIconClick('Electric')}
-      />
+      {serviceIconsData.map((icon) => (
+        <ServiceIcon key={icon.text} source={icon.source} text={icon.text} onClick={() => handleIconClick(icon.text)} />
+      ))}
     </div>
   );
 }

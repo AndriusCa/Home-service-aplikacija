@@ -2,14 +2,26 @@ import Logoipsum from './../assets/svg/Logoipsum.svg';
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
 
+interface User {
+  id?: string;
+  username?: string;
+  email?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
 function Navbar(): React.ReactElement {
-  const isSignedIn = false;
+  const user: User = JSON.parse(localStorage.getItem('user') || '{}') as User;
+
+  const username = user.username?.[0] || null;
 
   return (
     <header>
       <nav className={styles.leftSide}>
         <div>
-          <img src={Logoipsum} alt="Logo" />
+          <Link to="/">
+            <img src={Logoipsum} alt="Logo" />
+          </Link>
         </div>
         <div>
           <Link to="/">Home</Link>
@@ -23,7 +35,7 @@ function Navbar(): React.ReactElement {
       </nav>
       <div>
         <button>
-          <Link to="/Login">{isSignedIn ? 'Nothing' : ' Login / Sign Up'}</Link>
+          <Link to="/Login">{username ? username : ' Login / Sign Up'}</Link>
         </button>
       </div>
     </header>
