@@ -5,6 +5,8 @@ import Services from './components/pages/Services';
 import AboutUs from './components/pages/AboutUs';
 import SearchResult from './components/categories/SearchResult';
 import Login from './components/pages/Login';
+import MyBookings from './components/pages/MyBookings';
+import MyAccount from './components/pages/MyAccount';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/Services" element={<Services />} />
           <Route path="/AboutUs" element={<AboutUs />} />
           <Route path="/search/:category" element={<SearchResult />} />
+          <Route path="/mybookings" element={<MyBookings />} />
+          <Route path="/myaccount" element={<MyAccount />} />
         </Route>
       </Routes>
     </BrowserRouter>

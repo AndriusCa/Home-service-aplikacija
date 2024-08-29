@@ -1,6 +1,7 @@
 import Logoipsum from './../assets/svg/Logoipsum.svg';
 import styles from './Navbar.module.scss';
 import { Link } from 'react-router-dom';
+import AvatarDropdown from '../components/common/AvatarDropdown';
 
 interface User {
   id?: string;
@@ -33,11 +34,12 @@ function Navbar(): React.ReactElement {
           <Link to="/AboutUs">About us</Link>
         </div>
       </nav>
-      <div>
+      {/* <div>
         <button>
           <Link to="/Login">{username ? username : ' Login / Sign Up'}</Link>
         </button>
-      </div>
+      </div> */}
+      <AvatarDropdown username={username} />
     </header>
   );
 }
