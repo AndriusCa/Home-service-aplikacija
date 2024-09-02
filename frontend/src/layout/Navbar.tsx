@@ -56,7 +56,8 @@ const Navbar = () => {
         <button onClick={() => navigate(ROUTES.LOGIN)}>
           <Link to="/Login">{username ? username : ' Login / Sign Up'}</Link>
         </button>
-      </div>
+      </div> */}
+      <AvatarDropdown username={username} />
     </header>
   );
 }
