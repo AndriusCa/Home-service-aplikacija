@@ -1,8 +1,7 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
 
-function Layout(): React.ReactElement {
+const RootLayout = () => {
   return (
     <>
       <Navbar />
@@ -11,4 +10,4 @@ function Layout(): React.ReactElement {
   );
 }
 
-export default Layout;
+export default RootLayout;

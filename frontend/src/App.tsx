@@ -1,28 +1,48 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './components/pages/Home';
-import Layout from './layout/Layout';
+import RootLayout from './layout/RootLayout';
 import Services from './components/pages/Services';
 import AboutUs from './components/pages/AboutUs';
 import SearchResult from './components/categories/SearchResult';
 import Login from './components/pages/Login';
+import ErrorPage from './components/pages/ErrorPage';
+import { ROUTES } from './router/consts';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/Services" element={<Services />} />
-          <Route path="/AboutUs" element={<AboutUs />} />
-          <Route path="/search/:category" element={<SearchResult />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  );
+const router = createBrowserRouter([
+  {
+    element: <RootLayout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: ROUTES.HOME,
+        element: <Home />,
+      },
+      {
+        path: ROUTES.SERVICES,
+        element: <Services />,
+      },
+      {
+        path: ROUTES.ABOUT_US,
+        element: <AboutUs />,
+      },
+      {
+        path: ROUTES.LOGIN,
+        element: <Login />,
+      },
+      {
+        path: ROUTES.SEARCH_CATEGORY,
+        element: <SearchResult />,
+      },
+    ],
+  },
+]);
+
+const App = () => {
+  return <RouterProvider router={router} />;
 }
 
 export default App;
+
 
 // testing
 

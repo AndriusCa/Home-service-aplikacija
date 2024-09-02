@@ -1,6 +1,7 @@
 import Logoipsum from './../assets/svg/Logoipsum.svg';
 import styles from './Navbar.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ROUTES } from '../router/consts';
 
 interface User {
   id?: string;
@@ -10,31 +11,49 @@ interface User {
   updatedAt?: string;
 }
 
-function Navbar(): React.ReactElement {
+const Navbar = () => {
+
+  const navigate = useNavigate();
+
+  const links = [
+    {
+      href: ROUTES.HOME,
+      label: 'Home',
+    },
+    {
+      href: ROUTES.SERVICES,
+      label: 'Services',
+    },
+    {
+      href: ROUTES.ABOUT_US,
+      label: 'About Us',
+    },
+  ];
+
   const user: User = JSON.parse(localStorage.getItem('user') || '{}') as User;
 
   const username = user.username?.[0] || null;
+
+
 
   return (
     <header>
       <nav className={styles.leftSide}>
         <div>
-          <Link to="/">
+          <Link to={ROUTES.HOME}>
             <img src={Logoipsum} alt="Logo" />
           </Link>
         </div>
-        <div>
-          <Link to="/">Home</Link>
-        </div>
-        <div>
-          <Link to="/Services">Services</Link>
-        </div>
-        <div>
-          <Link to="/AboutUs">About us</Link>
-        </div>
+        <nav className={styles.navigation}>
+          {links.map((link) => (
+            <Link key={link.label} to={link.href}>
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </nav>
       <div>
-        <button>
+        <button onClick={() => navigate(ROUTES.LOGIN)}>
           <Link to="/Login">{username ? username : ' Login / Sign Up'}</Link>
         </button>
       </div>

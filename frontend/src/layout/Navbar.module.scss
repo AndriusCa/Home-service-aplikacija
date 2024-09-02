@@ -10,26 +10,29 @@ header {
       margin: 2em 0;
     }
   }
+
   button {
-    background-color: #8056eb;
+    background-color: #025033;
     color: #fff;
     border: none;
-    border-radius: 8px;
+    border-radius: 45px;
     cursor: pointer;
     padding: 1rem 1.5rem;
     font-size: 1rem;
-    &:hover {
-      background-color: #5b24e7;
-    }
+    // &:hover {
+    //   background-color: #5b24e7;
+    // }
     a {
       text-decoration: none;
       color: inherit;
+      text-transform: capitalize;
 
       &:hover {
         text-decoration: underline;
       }
     }
   }
+
   .leftSide {
     div {
       color: #323232;
@@ -64,6 +67,11 @@ header {
       }
     }
   }
+}
+
+.navigation {
+  display: flex;
+  gap: 1.5rem;
 }
 
 .removeUnderline {
